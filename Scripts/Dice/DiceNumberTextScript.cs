@@ -31,16 +31,19 @@ public class DiceNumberTextScript : MonoBehaviour {
     {
         if (dice1Ready && dice2Ready)
         {
+
             dice1 = diceNumber1;
             dice2 = diceNumber2;
             total = diceNumber1 + diceNumber2;
             
             text.text = total.ToString();
 
-            sumCombos.GetCombinations(total);
-
             dice1Ready = false;
             dice2Ready = false;
+
+            sumCombos.GetCombinations(total);
+
+            
         }
         
 	}

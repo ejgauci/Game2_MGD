@@ -13,7 +13,7 @@ public class SumCombinations : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int[] numb = new int[9] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        numb = new int[9] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
         //PossibleSumCombinations(numb, 12);
     }
 

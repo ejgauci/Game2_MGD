@@ -26,7 +26,7 @@ public class DiceCheckZoneScript : MonoBehaviour {
         
             if (diceVelocity.x == 0f && diceVelocity.y == 0f && diceVelocity.z == 0f && diceThrown)
             {
-                print("dice1");
+                //print("dice1");
 
                 switch (col.gameObject.name)
                 {

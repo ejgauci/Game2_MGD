@@ -27,7 +27,7 @@ public class Dice2CheckZoneScript : MonoBehaviour {
             
             if (diceVelocity.x == 0f && diceVelocity.y == 0f && diceVelocity.z == 0f && diceThrown)
             {
-                print("dice 2");
+                //print("dice 2");
                 switch (col.gameObject.name)
                 {
                     case "Side1":
