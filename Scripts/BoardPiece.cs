@@ -6,6 +6,7 @@ public class BoardPiece : MonoBehaviour
 {
     public bool isShut = false;
     public int tileValue = 0;
+    public bool canBePressed = true;
 
 
     public void setValue(int val)

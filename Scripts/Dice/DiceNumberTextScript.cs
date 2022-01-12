@@ -17,8 +17,9 @@ public class DiceNumberTextScript : MonoBehaviour {
 
     public bool dice1Ready = false;
     public bool dice2Ready = false;
+    
+    public GameManager gameManager;
 
-    public SumCombinations sumCombos;
 
     // Use this for initialization
     void Start () {
@@ -40,10 +41,9 @@ public class DiceNumberTextScript : MonoBehaviour {
 
             dice1Ready = false;
             dice2Ready = false;
-
-            sumCombos.GetCombinations(total);
-
             
+            gameManager.Test(total);
+
         }
         
 	}

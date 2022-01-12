@@ -478,6 +478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isShut: 0
   tileValue: 0
+  canBePressed: 1
 --- !u!114 &242474730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -958,6 +959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isShut: 0
   tileValue: 0
+  canBePressed: 1
 --- !u!114 &586011859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1724,7 +1726,6 @@ GameObject:
   - component: {fileID: 1274884829}
   - component: {fileID: 1274884828}
   - component: {fileID: 1274884827}
-  - component: {fileID: 1274884831}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -1782,6 +1783,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasManager: {fileID: 1189899430}
+  numb: 010000000200000003000000040000000500000006000000070000000800000009000000
+  FlipCards:
+  - {fileID: 586011855}
+  - {fileID: 1547696559}
+  - {fileID: 1408048364}
+  - {fileID: 1487688266}
+  - {fileID: 1305760551}
+  - {fileID: 2118204212}
+  - {fileID: 1927291802}
+  - {fileID: 1300270174}
+  - {fileID: 242474726}
 --- !u!4 &1274884830
 Transform:
   m_ObjectHideFlags: 0
@@ -1796,18 +1808,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1274884831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1274884826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4323da0173afc64390122dcf75a173d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1300270174
 GameObject:
   m_ObjectHideFlags: 0
@@ -1874,6 +1874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isShut: 0
   tileValue: 0
+  canBePressed: 1
 --- !u!114 &1300270178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1966,7 +1967,7 @@ MonoBehaviour:
   dice2: 0
   dice1Ready: 0
   dice2Ready: 0
-  sumCombos: {fileID: 1274884831}
+  gameManager: {fileID: 1274884829}
 --- !u!114 &1302609977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2075,6 +2076,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isShut: 0
   tileValue: 0
+  canBePressed: 1
 --- !u!114 &1305760555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2256,6 +2258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isShut: 0
   tileValue: 0
+  canBePressed: 1
 --- !u!114 &1408048368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2436,6 +2439,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isShut: 0
   tileValue: 0
+  canBePressed: 1
 --- !u!114 &1487688270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2540,6 +2544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isShut: 0
   tileValue: 0
+  canBePressed: 1
 --- !u!114 &1547696563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2838,6 +2843,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isShut: 0
   tileValue: 0
+  canBePressed: 1
 --- !u!114 &1927291806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2889,6 +2895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dczs: {fileID: 0}
+  dczs2: {fileID: 0}
 --- !u!1 &2041741131
 GameObject:
   m_ObjectHideFlags: 0
@@ -3050,6 +3057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isShut: 0
   tileValue: 0
+  canBePressed: 1
 --- !u!114 &2118204216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3894,6 +3902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dczs: {fileID: 0}
+  dczs2: {fileID: 0}
 --- !u!1 &9009509793044455839
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 using Photon.Pun;
 
 public class GameManager : MonoBehaviourPun
@@ -114,5 +116,130 @@ public class GameManager : MonoBehaviourPun
     void Update()
     {
         
+    }
+
+
+
+
+     public List<int> numb = new List<int>{ 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+     public ArrayList combinations = new ArrayList();
+
+
+
+     public List<GameObject> FlipCards;
+
+    //public SumCombinations sumCombos;
+
+    public int totalInThisTurn = 0;
+
+
+    public void Test(int total)
+    {
+        int[] numb = new int[9] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        combinations.Clear();
+
+        Debug.Log("testing method");
+        PossibleSumCombinations(numb, total);
+    }
+
+
+    public void GetCombinations(int value)
+    {
+        int[]numb = new int[9] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        PossibleSumCombinations(numb, value);
+    }
+
+    public void PossibleSumCombinations(int[] numbers, int diceValue, List<int> p = null)
+    {
+        if (p == null)
+            p = new List<int>();
+
+        int s = p.Sum();
+
+        if (s == diceValue)
+        {
+            
+            Debug.Log("Total " + diceValue + " = " + String.Join(",", new List<int>(p).ConvertAll(i => i.ToString()).ToArray()));
+            combinations.Add(p);
+        }
+            
+
+        if (s >= diceValue)
+            return;
+
+        for (int i = 0; i < numbers.Length; i++)
+        {
+            int n = numbers[i];
+            int[] remaining = numbers.Skip(i + 1).ToArray();
+            List<int> tmpP = new List<int>(p);
+            tmpP.Add(n);
+            PossibleSumCombinations(remaining, diceValue, tmpP);
+        }
+
+    }
+
+
+    /*public bool Validation(int tileToBeFlipped)
+    {
+
+        PossibleSumCombinations(numb.ToArray(), totalInThisTurn);
+        return true;
+    } */
+
+
+
+
+
+    public void Test2()
+    {
+        foreach (List<int> combination in combinations)
+        {
+            print(String.Join(",", combination.ConvertAll(i => i.ToString()).ToArray()));
+        }
+    }
+
+    public void whatCanBeFlipped(int total)
+    {
+        PossibleSumCombinations(numb.ToArray(), total);
+        List<int> possibleCombo = new List<int>();
+
+        foreach (List<int> combo in combinations)
+        {
+            foreach (int number in combo)
+            {
+                if (!possibleCombo.Contains(number))
+                {
+                    possibleCombo.Add(number);
+                }
+            } 
+        }
+
+        //print(String.Join(",", possibleCombo.ConvertAll(i => i.ToString()).ToArray()));
+
+        for (int i = 0; i < FlipCards.Count; i++)
+        {
+            FlipCards[i].GetComponent<BoardPiece>().canBePressed = false;
+        }
+
+        foreach (int combo in possibleCombo)
+        {
+            FlipCards[combo - 1].GetComponent<BoardPiece>().canBePressed = true;
+        }
+        combinations.Clear();
+        if (possibleCombo.Count == 0)
+        {
+            resetTiles();
+        }
+    }
+
+    public void resetTiles()
+    {
+        for (int i = 0; i < FlipCards.Count; i++)
+        {
+            if (!FlipCards[i].GetComponent<BoardPiece>().isShut)
+            {
+                FlipCards[i].GetComponent<BoardPiece>().canBePressed = true;
+            }
+        }
     }
 }
