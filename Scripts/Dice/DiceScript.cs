@@ -10,6 +10,9 @@ public class DiceScript : MonoBehaviour {
     public DiceCheckZoneScript dczs;
     public Dice2CheckZoneScript dczs2;
 
+    public GameManager gm;
+    public Player currentActivePlayer; //current player's turn
+
 // Use this for initialization
     void Start () {
 		rb = GetComponent<Rigidbody> ();
@@ -26,7 +29,16 @@ public class DiceScript : MonoBehaviour {
         }
 
 
-        ThrowDice();
+
+        if (gm.player == gm.currentActivePlayerID)
+        {
+            ThrowDice();
+        }
+        else
+        {
+            rb.isKinematic = true;
+        }
+        
     }
 	
 	// Update is called once per frame
