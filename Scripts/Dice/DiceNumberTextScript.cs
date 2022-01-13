@@ -41,8 +41,9 @@ public class DiceNumberTextScript : MonoBehaviour {
 
             dice1Ready = false;
             dice2Ready = false;
-            
-            gameManager.Test(total);
+
+            gameManager.setTotal(total);
+            //gameManager.Test(total);
 
         }
         

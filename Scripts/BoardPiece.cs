@@ -6,8 +6,14 @@ public class BoardPiece : MonoBehaviour
 {
     public bool isShut = false;
     public int tileValue = 0;
-    public bool canBePressed = true;
+    public bool canBePressed = false;
 
+    public GameManager gm;
+
+    void Start()
+    {
+        //gm = GameObject.FindGameObjectWithTag("Scripts").GetComponent<GameManager>();
+    }
 
     public void setValue(int val)
     {
@@ -26,4 +32,11 @@ public class BoardPiece : MonoBehaviour
     {
         return isShut;
     }
+
+    public void Click()
+    {
+        gm.Validation(tileValue);
+    }
+
+
 }

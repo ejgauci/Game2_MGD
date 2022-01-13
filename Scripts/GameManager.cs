@@ -5,6 +5,7 @@ using UnityEngine;
 using System.Linq;
 using Photon.Pun;
 using UnityEngine.UI;
+using UnityEngine.WSA;
 
 public class GameManager : MonoBehaviourPun
 {
@@ -76,7 +77,7 @@ public class GameManager : MonoBehaviourPun
     {
         BoardPiece boardPiece = gameObjBoardPiece.GetComponent<BoardPiece>();
 
-        if(boardPiece.GetIsShut() == false)
+        if(boardPiece.GetIsShut() == false && boardPiece.canBePressed == true)
         {
 
 
@@ -149,6 +150,30 @@ public class GameManager : MonoBehaviourPun
     public int diceValue;
     public int combo;
 
+    public void setTotal(int totalDice)
+    {
+
+        //FlipCards
+        diceValue = totalDice;
+
+        combinations.Clear();
+        for (int i = 0; i < FlipCards.Count; i++)
+        {
+            FlipCards[i].GetComponent<BoardPiece>().canBePressed = false;
+        }
+
+        Debug.Log("testing method");
+        PossibleSumCombinations(numb.ToArray(), totalDice);
+
+        foreach (List<int> combo in combinations)
+        {
+            foreach (int item in combo)
+            {
+                FlipCards[item - 1].GetComponent<BoardPiece>().canBePressed = true;
+            }
+        }
+
+    }
 
     public void Test(int total)
     {
