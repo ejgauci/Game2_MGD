@@ -77,18 +77,31 @@ public class GameManager : MonoBehaviourPun
     {
         BoardPiece boardPiece = gameObjBoardPiece.GetComponent<BoardPiece>();
 
-        if(boardPiece.GetIsShut() == false && boardPiece.canBePressed == true)
+
+        if (player == currentActivePlayerID)
         {
+            if (boardPiece.GetIsShut() == false && boardPiece.canBePressed == true)
+            {
 
 
 
-            //set fruit according to current active player
-            boardPiece.setShut();
+                //set fruit according to current active player
+                boardPiece.setShut();
 
-            int value = boardPiece.getValue();
+                int value = boardPiece.getValue();
 
-            //notify the canvas manager to render/update board
-            canvasManager.BoardPaint(gameObjBoardPiece);
+                //notify the canvas manager to render/update board
+                canvasManager.BoardPaint(gameObjBoardPiece);
+            }
+        }
+        else
+        {
+                //notify the canvas manager to render/update board
+                canvasManager.BoardPaint(gameObjBoardPiece);
+            
+        }
+
+
 
            /*
             bool win = CheckWinner(boardPiece);
@@ -110,8 +123,6 @@ public class GameManager : MonoBehaviourPun
                     ChangeActivePlayer();
                 }
             }*/
-
-        }
     }
 
    
