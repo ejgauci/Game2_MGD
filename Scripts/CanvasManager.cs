@@ -64,6 +64,8 @@ public class CanvasManager : MonoBehaviour
             
         }
     }
+
+
     //this method is being called automatically when we click the boardpiece
     public void GameBoardPieceEventMethod(UnityEngine.EventSystems.BaseEventData baseEvent)
     {
@@ -119,6 +121,16 @@ public class CanvasManager : MonoBehaviour
             
     }
 
+    public void ResetTiles()
+    {
+        for (int i = 1; i <= 9; i++)
+        {
+            GameObject boardPiece = this.transform.Find("Tiles/Tile" + i).gameObject;
+            boardPiece.GetComponent<Image>().sprite = fruitEmpty;
+
+        }
+    }
+    
     public void ChangeBottomLabel(string message)
     {
         transform.Find("PanelBottom/LblMessage").GetComponent<TextMeshProUGUI>().text = message;

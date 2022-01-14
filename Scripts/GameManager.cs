@@ -170,7 +170,7 @@ public class GameManager : MonoBehaviourPun
 
     public bool throwReady = true;
 
-
+    public bool switchPlayer = false;
     public void setTotal(int totalDice)
     {
 
@@ -194,7 +194,37 @@ public class GameManager : MonoBehaviourPun
             }
         }
 
+        StartCoroutine(checkRoundReady());
+
+        
+
     }
+
+    public int cannotBePressed = 0;
+    IEnumerator checkRoundReady(){
+        yield return new WaitForSeconds(2);
+
+        cannotBePressed = 0;
+
+        for (int i = 0; i < FlipCards.Count; i++)
+        {
+            if (FlipCards[i].GetComponent<BoardPiece>().canBePressed == false)
+            {
+                cannotBePressed++;
+            }
+        }
+
+        if (cannotBePressed == 9)
+        {
+            networkManager.NotifyPlayerChanged();
+            switchPlayer = true;
+            //ChangeActivePlayer();
+            
+        }
+        
+
+    }
+
 
     public void Test(int total)
     {
@@ -360,42 +390,10 @@ public class GameManager : MonoBehaviourPun
         }
     }
 
-
-
-    /*
-    public void whatCanBeFlipped(int total)
+    public void resetCanvas()
     {
-        PossibleSumCombinations(numb.ToArray(), total);
-        List<int> possibleCombo = new List<int>();
-
-        foreach (List<int> combo in combinations)
-        {
-            foreach (int number in combo)
-            {
-                if (!possibleCombo.Contains(number))
-                {
-                    possibleCombo.Add(number);
-                }
-            } 
-        }
-
-        //print(String.Join(",", possibleCombo.ConvertAll(i => i.ToString()).ToArray()));
-
-        for (int i = 0; i < FlipCards.Count; i++)
-        {
-            FlipCards[i].GetComponent<BoardPiece>().canBePressed = false;
-        }
-
-        foreach (int combo in possibleCombo)
-        {
-            FlipCards[combo - 1].GetComponent<BoardPiece>().canBePressed = true;
-        }
-        combinations.Clear();
-        if (possibleCombo.Count == 0)
-        {
-            resetTiles();
-        }
-    } */
+        canvasManager.ResetTiles();
+    }
 
 
 }

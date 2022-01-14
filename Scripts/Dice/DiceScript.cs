@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DiceScript : MonoBehaviour {
 
@@ -46,7 +47,8 @@ public class DiceScript : MonoBehaviour {
 	void Update () {
 		diceVelocity = rb.velocity;
 
-		if (Input.GetKeyDown (KeyCode.Space))
+		//if (Input.GetKeyDown (KeyCode.Space) && gm.throwReady)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             
             ThrowDice();
@@ -56,6 +58,7 @@ public class DiceScript : MonoBehaviour {
     void ThrowDice()
     {
         gm.throwReady = false;
+        GameObject.Find("CantFlip").GetComponent<Text>().text = "";
 
         if (gameObject.tag == "dice")
         {

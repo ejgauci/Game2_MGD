@@ -1652,8 +1652,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 31.85, y: -85.717}
-  m_SizeDelta: {x: 448.97, y: 218.715}
+  m_AnchoredPosition: {x: 0.431, y: -78.1}
+  m_SizeDelta: {x: 386.133, y: 203.482}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &905983350
 MonoBehaviour:
@@ -1688,7 +1688,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ____
+  m_Text: 
 --- !u!222 &905983351
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2470,6 +2470,9 @@ MonoBehaviour:
   totalDiceValue: 0
   diceValue: 0
   combo: 0
+  throwReady: 1
+  switchPlayer: 0
+  cannotBePressed: 0
 --- !u!4 &1274884830
 Transform:
   m_ObjectHideFlags: 0

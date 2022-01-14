@@ -38,4 +38,27 @@ public class NetworkManager : MonoBehaviour, IPunObservable
         GetComponent<GameManager>().SelectBoardPiece(GameObject.Find(gameObjectName));
     }
 
+    public void NotifyPlayerChanged()
+    {
+        if ((int) gameManager.currentActivePlayer.id == PhotonNetwork.LocalPlayer.ActorNumber)
+        {
+            //allow the player to change active player
+            photonView.RPC("RPC_NotifyPlayerChanged", RpcTarget.All);
+            Debug.Log("sent rpc to change player");
+        }
+            
+        
+    }
+
+    [PunRPC]
+    public void RPC_NotifyPlayerChanged()
+    {
+        Debug.Log("received rpc to change player");
+        GetComponent<GameManager>().ChangeActivePlayer();
+        GetComponent<GameManager>().resetCanvas();
+
+    }
+
+
+
 }
