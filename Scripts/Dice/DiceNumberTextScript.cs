@@ -48,4 +48,13 @@ public class DiceNumberTextScript : MonoBehaviour {
         }
         
 	}
+
+    public void setDiceValue(int value)
+    {
+        text.text = value.ToString();
+        dice1Ready = false;
+        dice2Ready = false;
+
+        gameManager.setTotal(value);
+    }
 }

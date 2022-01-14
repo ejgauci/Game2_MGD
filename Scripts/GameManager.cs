@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using Photon.Pun;
+using TMPro;
 using UnityEngine.UI;
 using UnityEngine.WSA;
 
@@ -408,6 +409,32 @@ public class GameManager : MonoBehaviourPun
     public void setScore(int score)
     {
         canvasManager.setP1Score(score);
+    }
+
+    public void PlayerChange(int score)
+    {
+        ChangeActivePlayer();
+        resetCanvas();
+        setScore(score);
+    }
+
+    public void PlayerChangeCheat()
+    {
+        networkManager.NotifyPlayerChanged(0);
+    }
+
+    public GameObject diceValueCheat;
+    public DiceNumberTextScript dnts;
+
+    public void changeDiceValueCheat()
+    {
+        print("change dice cheat");
+        
+        string newDiceValue = diceValueCheat.GetComponent<Text>().text;
+        print("string value: "+ newDiceValue);
+
+        //setTotal(int.Parse(newDiceValue));
+        dnts.setDiceValue(int.Parse(newDiceValue));
     }
 
 

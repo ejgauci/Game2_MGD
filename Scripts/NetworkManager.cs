@@ -54,9 +54,7 @@ public class NetworkManager : MonoBehaviour, IPunObservable
     public void RPC_NotifyPlayerChanged(int score)
     {
         Debug.Log("received rpc to change player");
-        GetComponent<GameManager>().ChangeActivePlayer();
-        GetComponent<GameManager>().resetCanvas();
-        GetComponent<GameManager>().setScore(score);
+        GetComponent<GameManager>().PlayerChange(score);
 
     }
 
