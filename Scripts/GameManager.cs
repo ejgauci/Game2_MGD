@@ -168,6 +168,9 @@ public class GameManager : MonoBehaviourPun
     public int diceValue;
     public int combo;
 
+    public bool throwReady = true;
+
+
     public void setTotal(int totalDice)
     {
 
@@ -281,7 +284,7 @@ public class GameManager : MonoBehaviourPun
             GameObject.Find("CantFlip").GetComponent<Text>().text = "can be flipped";
 
             print(totalInThisTurn);
-            print("POssibleCombos list count before else if: " + possCombos.Count);
+            //print("POssibleCombos list count before else if: " + possCombos.Count);
 
 
 
@@ -314,6 +317,9 @@ public class GameManager : MonoBehaviourPun
                 totalInThisTurn = 0;
                 resetTiles();
                 print("POssibleCombos list count before else if: " + possCombos.Count);
+
+                throwReady = true;
+
             }
 
             return true;

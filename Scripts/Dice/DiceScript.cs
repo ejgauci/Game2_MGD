@@ -12,6 +12,7 @@ public class DiceScript : MonoBehaviour {
 
     public GameManager gm;
     public Player currentActivePlayer; //current player's turn
+    
 
 // Use this for initialization
     void Start () {
@@ -45,14 +46,17 @@ public class DiceScript : MonoBehaviour {
 	void Update () {
 		diceVelocity = rb.velocity;
 
-		if (Input.GetKeyDown (KeyCode.Space)) {
-
+		if (Input.GetKeyDown (KeyCode.Space))
+        {
+            
             ThrowDice();
 		}
 	}
 
     void ThrowDice()
     {
+        gm.throwReady = false;
+
         if (gameObject.tag == "dice")
         {
             DiceNumberTextScript.diceNumber1 = 0;
