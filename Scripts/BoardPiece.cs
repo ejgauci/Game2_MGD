@@ -40,7 +40,10 @@ public class BoardPiece : MonoBehaviour
 
     public void Click()
     {
-        gm.Validation(tileValue);
+        if (gm.Validation(tileValue))
+        {
+            gm.SelectBoardPiece(gameObject);
+        }
     }
 
 

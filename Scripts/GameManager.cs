@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviourPun
 
     public BoardPiece[,] BoardMap = new BoardPiece[3, 3]; //2D Array
     public CanvasManager canvasManager;
+    public NetworkManager networkManager;
 
 
     public int player = 0;
@@ -80,9 +81,10 @@ public class GameManager : MonoBehaviourPun
 
         if (player == currentActivePlayerID)
         {
-            if (boardPiece.GetIsShut() == false && boardPiece.canBePressed == true)
-            {
-                
+            //print("i am the player");
+            //if (boardPiece.GetIsShut() == false && boardPiece.canBePressed == true)
+            //{
+                //print("not shut and can be pressed");
                 //set fruit according to current active player
                 boardPiece.setShut();
 
@@ -90,7 +92,13 @@ public class GameManager : MonoBehaviourPun
 
                 //notify the canvas manager to render/update board
                 canvasManager.BoardPaint(gameObjBoardPiece);
-            }
+                networkManager.NotifySelectBoardPiece(gameObjBoardPiece);
+
+            //}
+            //else
+            //{
+            //print("kif gejt hawn?");
+            //}
         }
         else
         {
@@ -278,7 +286,7 @@ public class GameManager : MonoBehaviourPun
 
 
             //make not in combo canbepressed = false
-            /*
+            
             for(int i = 0; i < FlipCards.Count; i++)
             {
                 FlipCards[i].GetComponent<BoardPiece>().canBePressed = false;
@@ -292,7 +300,7 @@ public class GameManager : MonoBehaviourPun
                 {
                     FlipCards[item - 1].GetComponent<BoardPiece>().canBePressed = true;
                 }
-            }*/
+            }
 
 
 
@@ -307,6 +315,7 @@ public class GameManager : MonoBehaviourPun
                 resetTiles();
                 print("POssibleCombos list count before else if: " + possCombos.Count);
             }
+
             return true;
         }
         else if(possCombos.Count ==0)

@@ -73,15 +73,16 @@ public class CanvasManager : MonoBehaviour
         //gameManager.SelectBoardPiece(pointerEventData.pointerClick.gameObject);
 
 
+
+        //this method is no longer in use..
         //if tile can be pressed
         if (pointerEventData.pointerClick.gameObject.GetComponent<BoardPiece>().canBePressed == true)
         {
-            networkManager.NotifySelectBoardPiece(pointerEventData.pointerClick.gameObject);
+            print("---can be pressed---to notify");
+            //networkManager.NotifySelectBoardPiece(pointerEventData.pointerClick.gameObject);
         }
         
         
-
-
         
 
     }
