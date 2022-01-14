@@ -142,7 +142,10 @@ public class CanvasManager : MonoBehaviour
         transform.Find("PanelTop/Player2Label").GetComponent<TextMeshProUGUI>().text = player2Name;
     }
 
-
+    public void setP1Score(int score)
+    {
+        transform.Find("PanelTop/Player1Score").GetComponent<TextMeshProUGUI>().text = score.ToString();
+    }
 
     // Update is called once per frame
     void Update()

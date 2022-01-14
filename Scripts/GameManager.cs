@@ -226,7 +226,7 @@ public class GameManager : MonoBehaviourPun
                
             }
 
-            networkManager.NotifyPlayerChanged();
+            networkManager.NotifyPlayerChanged(score);
             switchPlayer = true;
             //ChangeActivePlayer();
             
@@ -403,6 +403,11 @@ public class GameManager : MonoBehaviourPun
     public void resetCanvas()
     {
         canvasManager.ResetTiles();
+    }
+
+    public void setScore(int score)
+    {
+        canvasManager.setP1Score(score);
     }
 
 
