@@ -33,6 +33,11 @@ public class BoardPiece : MonoBehaviour
         return isShut;
     }
 
+    public void setCanBePressed(bool cbp)
+    {
+        canBePressed = cbp;
+    }
+
     public void Click()
     {
         gm.Validation(tileValue);

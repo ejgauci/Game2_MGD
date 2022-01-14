@@ -24,8 +24,12 @@ public class NetworkManager : MonoBehaviour, IPunObservable
 
     public void NotifySelectBoardPiece(GameObject gameObject)
     {
-        if((int)gameManager.currentActivePlayer.id == PhotonNetwork.LocalPlayer.ActorNumber) //allow the player to select a board item
+        if ((int) gameManager.currentActivePlayer.id == PhotonNetwork.LocalPlayer.ActorNumber)
+        {
+            //allow the player to select a board item
             photonView.RPC("RPC_NotifySelectBoardPiece", RpcTarget.All, gameObject.name);
+            Debug.Log("sent rpc " + gameObject.name);
+        }
     }
 
     [PunRPC]

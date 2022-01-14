@@ -71,18 +71,18 @@ public class CanvasManager : MonoBehaviour
         print(pointerEventData.pointerClick.gameObject.name);
         //call the SelectBoardPiece() in GameManager
         //gameManager.SelectBoardPiece(pointerEventData.pointerClick.gameObject);
+
+
+        //if tile can be pressed
+        if (pointerEventData.pointerClick.gameObject.GetComponent<BoardPiece>().canBePressed == true)
+        {
+            networkManager.NotifySelectBoardPiece(pointerEventData.pointerClick.gameObject);
+        }
         
         
+
+
         
-        
-        
-        networkManager.NotifySelectBoardPiece(pointerEventData.pointerClick.gameObject);
-
-
-
-
-
-
 
     }
 
@@ -93,10 +93,29 @@ public class CanvasManager : MonoBehaviour
     public void BoardPaint(GameObject gameObjBoardPiece)
     {
         BoardPiece boardPiece = gameObjBoardPiece.GetComponent<BoardPiece>();
-        if (boardPiece.GetIsShut())
-            gameObjBoardPiece.GetComponent<Image>().sprite = fruitApple;
+
+        if (gameManager.player == gameManager.currentActivePlayerID)
+        {
+            if (boardPiece.GetIsShut())
+            {
+                //print("is shut");
+                gameObjBoardPiece.GetComponent<Image>().sprite = fruitApple;
+                boardPiece.setCanBePressed(false);
+            }
+            else
+            {
+                //print("is not shut");
+                gameObjBoardPiece.GetComponent<Image>().sprite = fruitEmpty;
+            }
+        }
         else
-            gameObjBoardPiece.GetComponent<Image>().sprite = fruitEmpty;
+        {
+            gameObjBoardPiece.GetComponent<Image>().sprite = fruitApple;
+        }
+
+            
+            
+            
     }
 
     public void ChangeBottomLabel(string message)

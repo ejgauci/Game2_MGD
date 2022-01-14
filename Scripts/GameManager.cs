@@ -82,9 +82,7 @@ public class GameManager : MonoBehaviourPun
         {
             if (boardPiece.GetIsShut() == false && boardPiece.canBePressed == true)
             {
-
-
-
+                
                 //set fruit according to current active player
                 boardPiece.setShut();
 
@@ -97,6 +95,7 @@ public class GameManager : MonoBehaviourPun
         else
         {
                 //notify the canvas manager to render/update board
+                print("i am not the current player but i need to paint");
                 canvasManager.BoardPaint(gameObjBoardPiece);
             
         }
@@ -173,7 +172,7 @@ public class GameManager : MonoBehaviourPun
             FlipCards[i].GetComponent<BoardPiece>().canBePressed = false;
         }
 
-        Debug.Log("testing method");
+        Debug.Log("testing (2)");
         PossibleSumCombinations(numb.ToArray(), totalDice);
 
         foreach (List<int> combo in combinations)
@@ -275,6 +274,29 @@ public class GameManager : MonoBehaviourPun
 
             print(totalInThisTurn);
             print("POssibleCombos list count before else if: " + possCombos.Count);
+
+
+
+            //make not in combo canbepressed = false
+            /*
+            for(int i = 0; i < FlipCards.Count; i++)
+            {
+                FlipCards[i].GetComponent<BoardPiece>().canBePressed = false;
+            }
+
+            Debug.Log("testing (2)");
+
+            foreach (List<int> combo in combinations)
+            {
+                foreach (int item in combo)
+                {
+                    FlipCards[item - 1].GetComponent<BoardPiece>().canBePressed = true;
+                }
+            }*/
+
+
+
+
 
             if (totalInThisTurn == diceValue)
             {
