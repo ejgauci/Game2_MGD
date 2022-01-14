@@ -32,27 +32,35 @@ public class DiceScript : MonoBehaviour {
 
 
 
-        if (gm.player == gm.currentActivePlayerID)
+        /*if (gm.player == gm.currentActivePlayerID)
         {
             ThrowDice();
         }
         else
         {
             rb.isKinematic = true;
-        }
-        
+        }*/
+
+        ThrowDice();
+
     }
 	
 	// Update is called once per frame
 	void Update () {
 		diceVelocity = rb.velocity;
 
-		//if (Input.GetKeyDown (KeyCode.Space) && gm.throwReady)
-        if (Input.GetKeyDown(KeyCode.Space))
+        //if (Input.GetKeyDown (KeyCode.Space) && gm.throwReady)
+        if (gm.player == gm.currentActivePlayerID)
         {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+
+                ThrowDice();
+            }
+        }
+
+
             
-            ThrowDice();
-		}
 	}
 
     void ThrowDice()

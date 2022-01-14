@@ -201,6 +201,7 @@ public class GameManager : MonoBehaviourPun
     }
 
     public int cannotBePressed = 0;
+    public int score = 0;
     IEnumerator checkRoundReady(){
         yield return new WaitForSeconds(2);
 
@@ -216,6 +217,15 @@ public class GameManager : MonoBehaviourPun
 
         if (cannotBePressed == 9)
         {
+            for (int i = 0; i < FlipCards.Count; i++)
+            {
+                if (FlipCards[i].GetComponent<BoardPiece>().isShut == false)
+                {
+                    score = score + FlipCards[i].GetComponent<BoardPiece>().tileValue;
+                }
+               
+            }
+
             networkManager.NotifyPlayerChanged();
             switchPlayer = true;
             //ChangeActivePlayer();
